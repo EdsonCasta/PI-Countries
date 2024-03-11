@@ -1,19 +1,12 @@
-const { Activity, Country } = require('../db');
+const { Activity } = require('../db');
 
 const touristActivities = async (req, res) => {
   try {
 
-    const allActivities = await Activity.findAll({
-      include: [
-        {
-          model: Country,
-          require: true
-        }
-      ]
-    });
+    const allActivities = await Activity.findAll();
+    
     if (allActivities.length === 0) {
-      res.status(200).json({ message: 'No hay actividades' });
-      return;
+      return res.status(200).json({ message: 'No hay actividades' });
     }
     res.status(200).json(allActivities);
 

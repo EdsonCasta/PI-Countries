@@ -2,24 +2,22 @@ const { Country, Activity } = require('../db');
 
 
  const newActivity = async (req, res) => {
+
+  const { ID, Nombre, Dificultad, Duracion, Temporada, countries } = req.body;
+  
   try {
 
-    const { ID, Nombre, Dificultad, Duracion, Temporada, countries } = req.body;
+    const myCountries = await Country.findAll({
+      where: { Nombre: countries }
+    });
 
     if (![Nombre, Dificultad, Duracion, Temporada, countries ].every(Boolean)) {
-      res.status(401).json({ message: 'Faltan datos' })
-      return;
+      return res.status(401).json({ message: 'Faltan datos' }) 
     }
 
     const response = await Activity.create({ ID, Nombre, Dificultad, Duracion, Temporada });
 
-    for (const countryId of countries) {
-      const country = await Country.findByPk(countryId);
-      if (country) {
-        await response.addCountry(country);
-      }
-    }
-    
+    const addActivity = await response.addCountries(myCountries);
     res.status(200).json(response)
   } catch (error) {
     res.status(500).json(error.message)
