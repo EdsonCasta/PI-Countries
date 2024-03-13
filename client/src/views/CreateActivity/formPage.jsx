@@ -1,9 +1,17 @@
+import React from "react";
+import { Link } from "react-router-dom";
+// import Form from "../../components/Form/form";
+
 const FormPage = () => {
-    return (
-      <div>
-        <p>estas en el form</p>
-      </div>
-    );
-  };
-  
-  export default FormPage;
+  return (
+    <div>
+      <Link to={"/home"}>
+        <button>Atras</button>
+      </Link>
+      <h1>CREATE A NEW ACTIVITY</h1>
+      {/* <Form /> */}
+    </div>
+  );
+};
+
+export default FormPage;

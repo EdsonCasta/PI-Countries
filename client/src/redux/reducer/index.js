@@ -1,4 +1,4 @@
-import { GET_COUNTRIES } from "../actions";
+import { GET_BY_NAME, GET_COUNTRIES } from "../actions";
 
 let initialState = { allCountries: [], countriesCopy: [] }
 
@@ -10,9 +10,14 @@ function rootReducer(state = initialState, action) {
                 allCountries: action.payload,
                 countriesCopy: action.payload
             };
-            default:
-                return state;
-        }
+        case GET_BY_NAME:
+            return {
+                ...state,
+                allCountries: action.payload
+            };
+        default:
+            return state;
+    }
 }
 
 export default rootReducer;
