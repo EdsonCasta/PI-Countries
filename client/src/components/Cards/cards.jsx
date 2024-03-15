@@ -1,11 +1,14 @@
+import React from "react";
 import Card from "../Card/card";
 
-function Cards({ allCountries }) {
+import "./cardsStyle.css";
 
-    const countriesList = allCountries;
+function Cards({ pagina }) {
+
+    const countriesList = pagina;
 
     return (
-        <div>
+        <div className="cards-list">
             {countriesList?.map((country) => (
                 <Card key={country.ID} country={country} />
             ))}

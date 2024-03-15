@@ -1,68 +1,112 @@
-// import { useState } from "react";
-// import axios from "axios";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
-// function Form() {
-//   const [input, setInput] = useState({
-//     Name: "",
-//     Lastname: "",
-//     Nationality: "",
-//     Image: "",
-//     Birthdate: "",
-//     Description: "",
-//     Teams: ""
-//   })
+function Form() {
 
-//   function handleChange(event){
-//     setInput({
-//       ...input,
-//       [event.target.name]:event.target.value
-//     })
-//   }
+    const selectPaises = useSelector(state => state.allCountries);
 
-//   const handleSubmit = async(event) => {
-//     event.preventDefault(); 
-//     try {
-//       const response = await axios.post('http://localhost:5000/drivers', input);
-//     } catch (error) {
-//       console.error('Error al enviar la solicitud al servidor:', error.message);
-//     }
-//   }
+    selectPaises.sort((a, b) => {
+        return a.Nombre.localeCompare(b.Nombre);
+    });
 
-//     return (
-//       <div >
-//         <form onSubmit={handleSubmit}>
-//             <div>
-//                 <label htmlFor="Name">Nombre</label>
-//                 <input name="Name" value={input.Name} onChange={handleChange} />
-//             </div>
-//             <div>
-//                 <label htmlFor="Lastname">Apellido</label>
-//                 <input name="Lastname" value={input.Lastname} onChange={handleChange} />
-//             </div>
-//             <div>
-//                 <label htmlFor="Nationality">Nacionalidad</label>
-//                 <input name="Nationality" value={input.Nationality} onChange={handleChange} />
-//             </div>
-//             <div>
-//                 <label htmlFor="Image">Imagen</label>
-//                 <input name="Image" value={input.Image} onChange={handleChange} />
-//             </div>
-//             <div>
-//                 <label htmlFor="Birthdate">Fecha de Nacimiento</label>
-//                 <input name="Birthdate" value={input.Birthdate} onChange={handleChange} />
-//             </div>
-//             <div>
-//                 <label htmlFor="Description">Descripcion</label>
-//                 <input name="Description" value={input.Description} onChange={handleChange} />
-//             </div>
-//             <div>
-//                 <label htmlFor="Teams">Escuderias</label>
-//                 <input name="Teams" value={input.Teams} onChange={handleChange} />
-//             </div>
-//             <button type="submit">Submit</button>
-//         </form>
-//       </div>
-//     );
-//   };
-  
-//   export default Form;
+    // const dispatch = useDispatch();
+
+    const [input, setInput] = useState({
+        Nombre: "",
+        Dificultad: 1,
+        Duracion: 1,
+        Temporada: "",
+        countries: "",
+    });
+
+    function handleChange(event) {
+        setInput({
+            ...input,
+            [event.target.name]: event.target.value
+        })
+    }
+
+    function handleCountries(event) {
+        if (input.countries.includes(event.target.value)) {
+          alert('Este pais ya existe')
+          return;
+        }
+        setInput((state) => ({
+          ...state,
+          countries: [...state.countries, event.target.value]
+        }))
+    }
+
+    function deletePais(event) {
+        const id = event.target.id
+        setInput((state) => ({
+          ...state,
+          countries: state.countries.filter((country) => country !== id)
+        }))
+      }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await axios.post('http://localhost:3001/countries', input);
+        } catch (error) {
+            console.error('Error al enviar la solicitud al servidor:', error);
+        }
+    }
+
+    return (
+        <div >
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="Nombre">Nombre</label>
+                    <input name="Nombre" value={input.Nombre} onChange={handleChange} />
+                </div>
+                <div>
+                    <select name="Dificultad" defaultValue='Dificultad' onChange={handleChange}>
+                        <option value="Dificultad" disabled='disabled'>Dificultad...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="Duracion">Duracion</label>
+                    <input name="Duracion" value={input.Duracion} onChange={handleChange} />
+                </div>
+                <div>
+                    <select name="Temporada" defaultValue='Temporada' onChange={handleChange}>
+                        <option value="Temporada" disabled='disabled'>Temporada...</option>
+                        <option value="Verano">Verano</option>
+                        <option value="Otoño">Otoño</option>
+                        <option value="Invierno">Invierno</option>
+                        <option value="Primavera">Primavera</option>
+                    </select>
+                </div>
+                <div className='selectPaises'>
+                    <label htmlFor="countries">
+                        <select name="countries" defaultValue='all' onChange={handleCountries}>
+                            <option value="all" disabled='disabled'>Pais...</option>
+                            {selectPaises.map((country) => (
+                                <option key={country.ID} value={country.ID}>{country.Nombre}</option>
+                            ))}
+                        </select>
+                    </label>
+                    <div className='listaPaises'>
+                        {input.countries.length === 0 ?
+                            (<span style={{ margin: '0px auto' }}>Aun no hay paises seleccionados</span>) :
+                            (input.countries.map((country) => (
+                                <p key={country}>{country}<button onClick={deletePais} id={country} className='iconClose'>✘</button></p>
+                            )))
+                        }
+                    </div>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    );
+};
+
+export default Form;

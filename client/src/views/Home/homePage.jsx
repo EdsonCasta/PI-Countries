@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getByName, getCountries } from "../../redux/actions";
 import { Link } from "react-router-dom";
 
-import Cards from "../../components/Cards/cards";
 import SearchBar from "../../components/Navbar/searchBar";
+import Filtros from "../../components/Filtros/filtros";
+import Pagination from "../../components/Pagination/pagination";
+
+import "./homeStyle.css";
 
 function HomePage() {
 
     const dispatch = useDispatch();
-
-    const allCountries = useSelector((state) => state.allCountries);
 
     const [searchString, setSearchString] = useState("");
 
@@ -29,16 +30,17 @@ function HomePage() {
     }, [dispatch]);
 
     return (
-        <div>
+        <div className="home">
             <Link to={"/"}>
                 <button>Inicio</button>
             </Link>
             <Link to={"/create"}>
                 <button>Create Activity</button>
             </Link>
-            <p>estas en el home</p>
+            <h1 className="home-title">Paises Del Mundo</h1>
             <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
-            <Cards allCountries={allCountries} />
+            <Filtros />
+            <Pagination />
         </div>
     );
 };

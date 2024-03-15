@@ -25,7 +25,7 @@ function DetailPage() {
       <Link to={"/home"}>
         <button>Regresar</button>
       </Link>
-      <h1>Detalles del conductor</h1>
+      <h1>Detalle del país</h1>
       {country.ID && (
         <>
           <h2>ID: {country.ID}</h2>
@@ -36,6 +36,20 @@ function DetailPage() {
           <h2>Subregion: {country.Subregion}</h2>
           <h2>Area: {country.Area}</h2>
           <h2>Poblacion: {country.Poblacion}</h2>
+          {country.Activities && country.Activities.length > 0 && (
+            <>
+              <h2>Actividades:</h2>
+              {country.Activities.map((activity) => (
+                <div key={activity.ID}>
+                  <h3>ID: {activity.ID}</h3>
+                  <h3>Nombre: {activity.Nombre}</h3>
+                  <h3>Dificultad: {activity.Dificultad}</h3>
+                  <h3>Duracion: {activity.Duracion}</h3>
+                  <h3>Temporada: {activity.Temporada}</h3>
+                </div>
+              ))}
+            </>
+          )}
         </>
       )}
     </div>

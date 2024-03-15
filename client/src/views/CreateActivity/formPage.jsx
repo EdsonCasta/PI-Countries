@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import Form from "../../components/Form/form";
+import Form from "../../components/Form/form";
 
 const FormPage = () => {
   return (
@@ -9,7 +9,7 @@ const FormPage = () => {
         <button>Atras</button>
       </Link>
       <h1>CREATE A NEW ACTIVITY</h1>
-      {/* <Form /> */}
+      <Form />
     </div>
   );
 };
