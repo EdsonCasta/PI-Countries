@@ -6,7 +6,8 @@ export const GET_BY_CONTINENT = 'GET_BY_CONTINENT';
 export const GET_BY_ACTIVITY = 'GET_BY_ACTIVITY';
 export const ORDEN_ALFABETICO = 'ORDEN_ALFABETICO';
 export const CANT_POBLACION = 'CANT_POBLACION';
-export const LIST_PAGE = 'LIST_PAGE'; 
+export const LIST_PAGE = 'LIST_PAGE';
+export const GET_ACTIVITIES = 'GET_ACTIVITIES';
 
 export function getCountries() {
     return async (dispatch) => {
@@ -75,6 +76,16 @@ export const listPage = (countries, page) => {
   }
 };
 
-// export const getActivities = () => {
-//   return 
-// }
+export const getActivities = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios("http://localhost:3001/activities");
+      return dispatch({
+        type: "GET_ACTIVITIES",
+        payload: response.data
+      }) 
+    } catch (error) {
+      alert(error.response.data.error)
+    }
+  }
+}

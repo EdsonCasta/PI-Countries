@@ -1,6 +1,6 @@
-import { ORDEN_ALFABETICO, GET_BY_ACTIVITY, GET_BY_CONTINENT, GET_BY_NAME, GET_COUNTRIES, CANT_POBLACION, LIST_PAGE } from "../actions";
+import { ORDEN_ALFABETICO, GET_BY_ACTIVITY, GET_BY_CONTINENT, GET_BY_NAME, GET_COUNTRIES, CANT_POBLACION, LIST_PAGE, GET_ACTIVITIES } from "../actions";
 
-let initialState = { allCountries: [], countriesCopy: [], page: [] }
+let initialState = { allCountries: [], countriesCopy: [], page: [], allActivities: [] }
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {
@@ -45,7 +45,12 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 pagina: action.payload
-            };                
+            };
+        case GET_ACTIVITIES:
+            return {
+                ...state,
+                allActivities: action.payload
+            };                    
         default:
             return state;
     };
