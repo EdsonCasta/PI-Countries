@@ -18,28 +18,34 @@ function rootReducer(state = initialState, action) {
         case GET_BY_CONTINENT:
             return {
                 ...state,
-                allCountries: state.countriesCopy.filter((country) => country && country.Continente === action.payload)
+                allCountries: state.countriesCopy.filter((country) =>
+                    country && country.Continente === action.payload)
             };
         case GET_BY_ACTIVITY:
+            const filteredCountries = state.countriesCopy.filter((country) =>
+                country && country.Activities && country.Activities.find((activity) =>
+                    activity && activity.Nombre && activity.Nombre === action.payload))
+                    // console.log('Actividad seleccionada:', action.payload);
+    // console.log('Países filtrados:', filteredCountries);
             return {
                 ...state,
-                allCountries: state.countriesCopy.filter((country) => country && country.Activities.find((activity) => activity && activity.Nombre === action.payload))
+                allCountries: filteredCountries
             };
         case ORDEN_ALFABETICO:
             const orden = action.payload;
-            if(orden === "desc") state.allCountries.sort((a, b) => a.Nombre.localeCompare(b.Nombre));
-            if(orden === "asc") state.allCountries.sort((a, b) => b.Nombre.localeCompare(a.Nombre));
+            if (orden === "desc") state.allCountries.sort((a, b) => a.Nombre.localeCompare(b.Nombre));
+            if (orden === "asc") state.allCountries.sort((a, b) => b.Nombre.localeCompare(a.Nombre));
             return {
                 ...state,
-                allCountries: [ ...state.allCountries ]
+                allCountries: [...state.allCountries]
             };
         case CANT_POBLACION:
             const mayorMenor = action.payload;
-            if(mayorMenor === "desc") state.allCountries.sort((a, b) => b.Poblacion - a.Poblacion);
-            if(mayorMenor === "asc") state.allCountries.sort((a, b) => a.Poblacion - b.Poblacion);
+            if (mayorMenor === "desc") state.allCountries.sort((a, b) => b.Poblacion - a.Poblacion);
+            if (mayorMenor === "asc") state.allCountries.sort((a, b) => a.Poblacion - b.Poblacion);
             return {
                 ...state,
-                allCountries: [ ...state.allCountries ]
+                allCountries: [...state.allCountries]
             };
         case LIST_PAGE:
             return {
@@ -50,7 +56,7 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 allActivities: action.payload
-            };                    
+            };
         default:
             return state;
     };

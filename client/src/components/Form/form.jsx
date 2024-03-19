@@ -10,14 +10,12 @@ function Form() {
         return a.Nombre.localeCompare(b.Nombre);
     });
 
-    // const dispatch = useDispatch();
-
     const [input, setInput] = useState({
         Nombre: "",
         Dificultad: 1,
         Duracion: 1,
         Temporada: "",
-        countries: "",
+        countries: [],
     });
 
     function handleChange(event) {
@@ -29,27 +27,42 @@ function Form() {
 
     function handleCountries(event) {
         if (input.countries.includes(event.target.value)) {
-          alert('Este pais ya existe')
-          return;
+            alert('Este pais ya existe')
+            return;
         }
         setInput((state) => ({
-          ...state,
-          countries: [...state.countries, event.target.value]
+            ...state,
+            countries: [...state.countries, event.target.value]
         }))
     }
 
     function deletePais(event) {
         const id = event.target.id
         setInput((state) => ({
-          ...state,
-          countries: state.countries.filter((country) => country !== id)
+            ...state,
+            countries: state.countries.filter((country) => country !== id)
         }))
-      }
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (input.countries.length === 0) {
+            alert('Selecciona al menos un país');
+            return;
+        }
         try {
-            await axios.post('http://localhost:3001/countries', input);
+            await axios.post('http://localhost:3001/activities', { ...input, countries: input.countries });
+
+            setInput({
+                Nombre: "",
+                Dificultad: 1,
+                Duracion: 1,
+                Temporada: "",
+                countries: []
+            });
+
+            alert('Actividad creada exitosamente');
         } catch (error) {
             console.error('Error al enviar la solicitud al servidor:', error);
         }
@@ -95,10 +108,11 @@ function Form() {
                         </select>
                     </label>
                     <div className='listaPaises'>
-                        {input.countries.length === 0 ?
-                            (<span style={{ margin: '0px auto' }}>Aun no hay paises seleccionados</span>) :
-                            (input.countries.map((country) => (
-                                <p key={country}>{country}<button onClick={deletePais} id={country} className='iconClose'>✘</button></p>
+                        {input.countries.length === 0 ? (
+                            <span>Aun no hay paises seleccionados</span>
+                        ) : (
+                            input.countries.map((country, index) => (
+                                <p key={index}>{country}<button onClick={deletePais} id={country} className='iconClose'>✘</button></p>
                             )))
                         }
                     </div>

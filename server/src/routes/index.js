@@ -11,7 +11,7 @@ const router = Router();
 router.get('/countries/name', countryByName);
 router.get('/countries', allCountries);
 router.get('/countries/:id', countryById);
-router.post('/countries', newActivity);
+router.post('/activities', newActivity);
 router.get('/activities', touristActivities);
 router.delete('/activities/:Nombre', deleteActivities)
 

@@ -1,12 +1,13 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { cantPoblacion, getByActivity, getByContinent, ordenAlfabetico } from "../../redux/actions";
+import { cantPoblacion, getByActivity, getByContinent, getCountries, ordenAlfabetico } from "../../redux/actions";
 
 
 function Filtros() {
 
+    const selectActividades = useSelector(state => state.allActivities);
+
     const dispatch = useDispatch();
-    // const storeState = useSelector(state => state.allCountries);
 
     function handleContinente(event) {
         dispatch(getByContinent(event.target.value));
@@ -38,13 +39,13 @@ function Filtros() {
 
             <select name="activity" defaultValue="activity" onChange={handleActivities}>
                 <option value="activity" disabled="disabled">Filtrar Actividad</option>
-                {/* {selectActividades.message ? (
-                    <option value="null" disabled="disabled">{selectActividades.message}</option>
+                {selectActividades.message ? (
+                    <option key="no-data" value="null" disabled="disabled">{selectActividades.message}</option>
                 ) : (
                     selectActividades.map((actividad) => (
-                        <option key={actividad.id} value={actividad.name}>{actividad.name}</option>
+                        <option key={actividad.id} value={actividad.Nombre}>{actividad.Nombre}</option>
                     ))
-                )}; */}
+                )};
             </select>
 
             <select name="alfabetic" defaultValue="alfabetic" onChange={handleAlfabetico}>

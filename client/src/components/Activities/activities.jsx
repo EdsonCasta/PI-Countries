@@ -1,28 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getActivities } from "../../redux/actions";
+import { Link } from "react-router-dom";
 
 const Activities = () => {
 
     const allActivities = useSelector(state => state.allActivities);
-//   const [paisesSelect, setPaisesSelect] = useState([])
     const dispatch = useDispatch();
-
-    // async function getPaises() {
-    //     try {
-    //       const { data } = await axios(URLcountries)
-    //       const array = data.map((country) => {
-    //         return {
-    //           name: country.Nombre,
-    //           id: country.ID
-    //         }
-    //       })
-    //       setPaisesSelect(array)
-    //     } catch (error) {
-    //       console.log(error.response.data.error)
-    //     }
-    //   }
 
     async function deleteActivity(Nombre) {
         try {
@@ -37,11 +22,7 @@ const Activities = () => {
       };
 
     useEffect(() => {
-        dispatch(getActivities())
-        // if (allActivities.length === 0) {
-        //     dispatch(actividad())
-        //   }
-        //   getPaises()
+      dispatch(getActivities());
     },[])
 
   return (
@@ -60,20 +41,19 @@ const Activities = () => {
           </thead>
           <tbody>
             {allActivities.message ? (<tr><td colSpan='6'>{allActivities.message}</td></tr>
-              ): allActivities.map((activity, id) => {
+              ): allActivities.map((activity) => {
                 return (
-                  <tr key={id}>
+                  <tr key={activity.ID}>
                     <td>{activity.ID}</td>
                     <td>{activity.Nombre}</td>
                     <td>{activity.Duracion}</td>
                     <td>{activity.Dificultad}</td>
                     <td>{activity.Temporada}</td>
-                    {/* <td className='listCountries'>{activity.countries.length <= 0 ? 'No hay paises' : activity.countries.map((country) => {
-                        console.log(country);
+                    <td className='listCountries'>{activity.Countries.length <= 0 ? 'No hay paises' : activity.Countries.map((country, index) => {
                       return (
-                        <p key={country.id}><Link to={`/detail/${country.id}`}><i>{country.Nombre}</i></Link><button onClick={() => { deletePais(activity.Nombre, country.id) }} id={country.id} className='iconClose'>✘</button></p>
+                      <p key={country.id || index}><Link to={`/home/${country.ID}`}><i>{country.Nombre}</i></Link></p>
                       )
-                    })}</td> */}
+                     })}</td>
                     <td><button onClick={() => { deleteActivity(activity.Nombre) }} className='btn-delete'>Borrar</button></td>
                   </tr>
                 )
