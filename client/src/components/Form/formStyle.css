@@ -1,0 +1,77 @@
+.modalContainer form{
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.modalContainer form label{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+.modalContainer form label select{
+    padding: 0px 10px;
+    font-size: 1.1rem;
+    margin: 0px 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.selectPaises{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.selectPaises label select{
+    width: 176px;
+    height: fit-content;
+}
+
+.listaPaises{
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 50px;
+}
+.listaPaises p{
+    border-radius: 10px;
+    background-color: rgb(138, 138, 233);
+    padding: 1px 4px;
+    margin: 3px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.iconClose{
+    margin-left: 1px;
+    cursor: pointer;
+    transition: all .3s;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.iconClose:hover{
+    color: blue;
+}
+
+.botones{
+    width: fit-content;
+    padding: 0px 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    margin: 15px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px black;
+}
+
+

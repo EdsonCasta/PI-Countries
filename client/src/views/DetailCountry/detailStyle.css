@@ -1,0 +1,89 @@
+.detail-page {
+    background-image: url('https://c8.alamy.com/compes/hjecpn/ilustracion-de-los-paises-hjecpn.jpg');
+    background-size: cover;
+    background-position: center; 
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.detailCountry{
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    border-radius: 10px;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 10px white;
+    backdrop-filter: blur(10px);
+}
+
+.detailCountry img{
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px white;
+}
+
+.detailCountry h2, h3{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10px 0px;
+    text-align: center;
+    color: #ccc;
+    text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
+}
+
+.actions{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 5px;
+    padding: 5px;
+}
+.actions h1{
+    width: 50%;
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
+}
+
+.actions button{
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 1.5px 20px;
+    box-shadow: 3px 3px 7px black;
+    cursor: pointer;
+}
+
+.detailActivity{
+    width: 50%;
+    min-width: 400px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 10px white;
+    backdrop-filter: blur(10px);
+}
+
+.detailActivity h2{
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 10px 5px;
+    color: white;
+    text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
+}
+
+
+
+
+
+

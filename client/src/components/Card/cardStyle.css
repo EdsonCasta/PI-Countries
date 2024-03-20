@@ -1,7 +1,7 @@
 .card-container {
     display: flex;
     flex-direction: column;
-    background-color: rgb(165, 56, 56);
+    background-color: rgb(112, 94, 94);
     border: 1px solid rgb(75, 70, 70);
     border-radius: 5px;
     padding: 25px;
@@ -20,4 +20,66 @@
     width: 100%;
     height: 150%;
     object-fit: contain;
+}
+
+.namePais{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
+    border-radius: 10px;
+}
+
+.imgFlag{
+    width: 100%;
+    min-height: 125px;
+    max-height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgFlag img{
+    width: 95%;
+    max-height: 125px;
+    height: auto;
+}
+
+.divInfo{
+    margin: 10px auto;
+    min-width: 180px;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+}
+.Africa{
+    background-color: rgba(186, 122, 38, 0.5);
+}
+.Americas{
+    background-color: rgba(255, 255, 0, 0.5);
+}
+.Europe{
+    background-color: rgba(0, 0, 255, 0.5);
+}
+.Asia{
+    background-color: rgba(255, 0, 0, 0.5);
+}
+.Antarctic{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.Oceania{
+    background-color: rgba(255, 165, 0, 0.5);
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
 }

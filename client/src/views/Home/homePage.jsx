@@ -31,15 +31,21 @@ function HomePage() {
 
     return (
         <div className="home">
-            <Link to={"/"}>
-                <button>Inicio</button>
-            </Link>
-            <Link to={"/create"}>
-                <button>Create Activity</button>
-            </Link>
-            <h1 className="home-title">Paises Del Mundo</h1>
-            <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
+            <div className="header">
+                <div className="inicio">
+                    <Link to={"/"}>
+                        <button>Inicio</button>
+                    </Link>
+                </div>
+                <div className="createActivity">
+                    <Link to={"/create"}>
+                        <button className="create-activity-btn" >Actividades</button>
+                    </Link>
+                </div>
             <Filtros />
+            </div>
+            <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
+            <h1 className="home-title">Paises Del Mundo</h1>
             <Pagination />
         </div>
     );

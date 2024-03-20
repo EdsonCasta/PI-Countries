@@ -9,9 +9,17 @@ const Card = ({ country }) => {
     return (
         <Link to={`/home/${ID}`}>
             <div className="card-container">
-                {country.ImagenDeLaBandera && <img src={ImagenDeLaBandera} />}
-                {country.Nombre && <h2>{Nombre}</h2>}
-                {country.Continente && <p>{Continente}</p>}
+                <div className='imgFlag'>
+                    {country.ImagenDeLaBandera && <img src={ImagenDeLaBandera} />}
+                </div>
+                <div className='namePais'>
+                    {country.Nombre && <h2>{Nombre}</h2>}
+                </div>
+                <div className={`divInfo ${Continente}`}>
+                    <div className='info'>
+                        {country.Continente && <p>{Continente}</p>}
+                    </div>
+                </div>
             </div>
         </Link>
     );

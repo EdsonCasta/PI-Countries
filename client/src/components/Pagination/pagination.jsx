@@ -1,3 +1,5 @@
+import './paginationStyle.css';
+
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -66,7 +68,7 @@ function Pagination() {
     }, [selectPaises, page])
 
     return (
-        <div>
+        <div className='paginado'>
             <Cards pagina={selectPagina} />
             <button onClick={() => { menos(page) }}>Anterior</button>
             <span>

@@ -1,0 +1,7 @@
+.background-image {
+    background-image: url('https://unsm.edu.pe/wp-content/uploads/2017/01/turismo-portada.jpg');
+    background-size: cover;
+    background-position: center; 
+    min-height: 100vh;
+    overflow: hidden;
+}

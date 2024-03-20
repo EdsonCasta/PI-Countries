@@ -8,14 +8,12 @@ import FormPage from "./views/CreateActivity/formPage";
 function App() {
   return (
     <BrowserRouter>
-    <div>
       <Routes>
         <Route path="/" element={ <LandingPage/> }/>
         <Route exact path="/home" element={ <HomePage/> }/>
         <Route path="/home/:id" element={ <DetailPage/> }/>
         <Route path="/create" element={ <FormPage/>}/>
       </Routes>
-    </div>
     </BrowserRouter> 
   )
 };

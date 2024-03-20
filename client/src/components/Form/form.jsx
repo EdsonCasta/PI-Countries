@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import './formStyle.css';
+
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { getActivities, getCountries } from '../../redux/actions';
 
 function Form() {
 
     const selectPaises = useSelector(state => state.allCountries);
+    const dispatch = useDispatch();
 
     selectPaises.sort((a, b) => {
         return a.Nombre.localeCompare(b.Nombre);
@@ -17,6 +21,7 @@ function Form() {
         Temporada: "",
         countries: [],
     });
+
 
     function handleChange(event) {
         setInput({
@@ -36,6 +41,10 @@ function Form() {
         }))
     }
 
+    useEffect(() => {
+        dispatch(getCountries());
+    }, [dispatch]);
+
     function deletePais(event) {
         const id = event.target.id
         setInput((state) => ({
@@ -53,7 +62,6 @@ function Form() {
         }
         try {
             await axios.post('http://localhost:3001/activities', { ...input, countries: input.countries });
-
             setInput({
                 Nombre: "",
                 Dificultad: 1,
@@ -61,15 +69,17 @@ function Form() {
                 Temporada: "",
                 countries: []
             });
+            dispatch(getActivities());
 
             alert('Actividad creada exitosamente');
         } catch (error) {
             console.error('Error al enviar la solicitud al servidor:', error);
+            alert(error.response.data.message);
         }
     }
 
     return (
-        <div >
+        <div className='modalContainer'>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="Nombre">Nombre</label>
@@ -109,7 +119,7 @@ function Form() {
                     </label>
                     <div className='listaPaises'>
                         {input.countries.length === 0 ? (
-                            <span>Aun no hay paises seleccionados</span>
+                            <span style={{ margin: '0px auto' }}>Aun no hay paises seleccionados</span>
                         ) : (
                             input.countries.map((country, index) => (
                                 <p key={index}>{country}<button onClick={deletePais} id={country} className='iconClose'>✘</button></p>
@@ -117,7 +127,9 @@ function Form() {
                         }
                     </div>
                 </div>
-                <button type="submit">Submit</button>
+                <div className='botones'>
+                    <button type="submit">Submit</button>
+                </div>
             </form>
         </div>
     );

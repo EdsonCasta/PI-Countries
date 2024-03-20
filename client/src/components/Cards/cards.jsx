@@ -9,9 +9,13 @@ function Cards({ pagina }) {
 
     return (
         <div className="cards-list">
+            <div className='bodyCards'>
             {countriesList?.map((country) => (
+                <div className='card'>
                 <Card key={country.ID} country={country} />
+                </div>
             ))}
+            </div>
         </div>
     );
 };
