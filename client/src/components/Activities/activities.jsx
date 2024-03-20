@@ -57,7 +57,7 @@ const Activities = () => {
                       <p key={country.id || index}><Link to={`/home/${country.ID}`}><i>{country.Nombre}</i></Link></p>
                     )
                   })}</td>
-                  <td><button onClick={() => { deleteActivity(activity.Nombre) }} className='btn-delete'>Borrar</button></td>
+                  <td className='borrar'><button onClick={() => { deleteActivity(activity.Nombre) }} className='btn-delete'>Borrar</button></td>
                 </tr>
               )
             })}

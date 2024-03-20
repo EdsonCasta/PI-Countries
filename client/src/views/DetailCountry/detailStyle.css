@@ -7,6 +7,8 @@
 }
 
 .detailCountry{
+    position: relative;
+    left: 46%;
     width: 100%;
     max-width: 500px;
     display: flex;
@@ -15,10 +17,6 @@
     align-items: center;
     margin: 5px;
     border-radius: 10px;
-    border: 2px solid white;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0px 0px 10px white;
-    backdrop-filter: blur(10px);
 }
 
 .detailCountry img{
@@ -44,6 +42,8 @@
     padding: 5px;
 }
 .actions h1{
+    position: relative;
+    right: 40%;
     width: 50%;
     text-align: center;
     font-size: 2.5rem;
@@ -52,7 +52,9 @@
 }
 
 .actions button{
-    font-size: 2rem;
+    position: relative;
+    left: 85%;
+    font-size: 1.5rem;
     font-weight: bold;
     border-radius: 10px;
     padding: 1.5px 20px;
@@ -61,6 +63,8 @@
 }
 
 .detailActivity{
+    position: relative;
+    right: 100%;
     width: 50%;
     min-width: 400px;
     margin: 20px;

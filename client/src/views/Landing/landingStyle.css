@@ -9,3 +9,26 @@
 /* https://i.pinimg.com/originals/7c/74/f7/7c74f7cbc51a8874d7ee59b72a7b774b.jpg */
 /* https://pirenopolisonline.com.br/wp-content/uploads/2019/09/foto-potencias-militares.jpg */
 /* https://img.freepik.com/fotos-premium/fondo-azul-moderno-ilustracion-mapa-mundial-fondo-tecnologia-mapa-mundial_676228-404.jpg */
+
+.landing-page button{
+    margin-top: 40%;
+    position: relative;
+    left: 45%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 1.5px 20px;
+    box-shadow: 3px 3px 7px black;
+    cursor: pointer;
+}
+
+.landing-page h1{
+    margin-bottom: 1%;
+    position: relative;
+    left: 25%;
+    width: 50%;
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
+}

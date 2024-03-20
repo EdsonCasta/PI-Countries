@@ -17,18 +17,62 @@ function Form() {
     const [input, setInput] = useState({
         Nombre: "",
         Dificultad: 1,
-        Duracion: 1,
+        Duracion: "",
         Temporada: "",
         countries: [],
     });
 
+    const [error, setError] = useState({
+        Nombre: "",
+        Dificultad: 1,
+        Duracion: "Debe ingresar un formato HH:MM",
+        Temporada: "",
+        countries: [],
+    });
+
+    const validate = (input) => {
+        let errors = {};
+
+        if (!input.Nombre.trim()) {
+            errors.Nombre = "El nombre es requerido";
+        } else if (!/^[a-zA-Z\s]+$/.test(input.Nombre)) {
+            errors.Nombre = "El nombre solo debe contener letras";
+        }
+
+        if (input.Dificultad < 1 || input.Dificultad > 5) {
+            errors.Dificultad = "La dificultad debe estar entre 1 y 5";
+        }
+
+        if (!input.Duracion.trim()) {
+            errors.Duracion = "La duración debe tener el formato HH:MM";
+        } else if (!/^\d{1,2}:\d{2}$/.test(input.Duracion)) {
+            errors.Duracion = "debe ingresar el formato valido";
+        }
+
+        if (!input.Temporada.trim()) {
+            errors.Temporada = "La temporada es requerida";
+        }
+
+        return errors;
+    };
 
     function handleChange(event) {
+        const { name, value } = event.target;
+
         setInput({
             ...input,
-            [event.target.name]: event.target.value
-        })
-    }
+            [name]: value
+        });
+
+        if (name !== 'countries') {
+            const fieldErrors = validate({ ...input, [name]: value });
+
+            setError(prevError => ({
+                ...prevError,
+                [name]: fieldErrors[name] || '' 
+            }));
+        }
+    };
 
     function handleCountries(event) {
         if (input.countries.includes(event.target.value)) {
@@ -81,9 +125,10 @@ function Form() {
     return (
         <div className='modalContainer'>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="Nombre">Nombre</label>
-                    <input name="Nombre" value={input.Nombre} onChange={handleChange} />
+                <div className='Nombre'>
+                    <label htmlFor="Nombre">Nombre :</label>
+                    <input name="Nombre" value={input.Nombre} onChange={handleChange} className={error.Nombre ? 'error-field' : ''} />
+                    {error.Nombre && <span className="error-message">{error.Nombre}</span>}
                 </div>
                 <div>
                     <select name="Dificultad" defaultValue='Dificultad' onChange={handleChange}>
@@ -95,9 +140,10 @@ function Form() {
                         <option value="5">5</option>
                     </select>
                 </div>
-                <div>
-                    <label htmlFor="Duracion">Duracion</label>
-                    <input name="Duracion" value={input.Duracion} onChange={handleChange} />
+                <div className='Nombre'>
+                    <label htmlFor="Duracion">Duracion :</label>
+                    <input name="Duracion" value={input.Duracion} onChange={handleChange} className={error.Duracion ? 'error-field' : ''} />
+                    {error.Duracion && <span className="error-message">{error.Duracion}</span>}
                 </div>
                 <div>
                     <select name="Temporada" defaultValue='Temporada' onChange={handleChange}>

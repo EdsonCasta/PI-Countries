@@ -27,9 +27,9 @@ function DetailPage() {
         <Link to={"/home"}>
           <button>Regresar</button>
         </Link>
-        <h1>Detalle del país</h1>
+        <h1 style={{ marginBottom: "-100px" }}>Detalle del país</h1>
       </div>
-      <div className='detailCountry'>
+      <div className='detailCountry' style={{ marginTop: "-20px" }}>
         {country.ID && (
           <>
             <h2>ID: {country.ID}</h2>
@@ -40,7 +40,7 @@ function DetailPage() {
             <h2>Subregion: {country.Subregion}</h2>
             <h2>Area: {country.Area}</h2>
             <h2>Poblacion: {country.Poblacion}</h2>
-            <div className='detailActivity'>
+            <div className='detailActivity' style={{ marginTop: "-300px" }}>
               {country.Activities && country.Activities.length > 0 && (
                 <>
                   <h2>Actividades:</h2>

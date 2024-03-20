@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
             }
         },
         Duracion: {
-            type: DataTypes.FLOAT,
+            type: DataTypes.TIME,
             allowNull: false
         },
         Temporada: {

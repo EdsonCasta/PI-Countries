@@ -5,3 +5,25 @@
     min-height: 100vh;
     overflow: hidden;
 }
+
+.background-image h1{
+    position: relative;
+    left: 25%;
+    width: 50%;
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
+}
+
+.background-image button{
+    margin-top: 1%;
+    position: relative;
+    left: 45%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 1.5px 20px;
+    box-shadow: 3px 3px 7px black;
+    cursor: pointer;
+}
