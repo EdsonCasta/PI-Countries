@@ -11,7 +11,7 @@ function DetailPage() {
   useEffect(() => {
     const fetchCountry = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/countries/${id}`);
+        const response = await axios.get(`https://countries-4778.onrender.com/countries/${id}`);
         setCountry(response.data);
       } catch (error) {
         console.error('Error al obtener los detalles del conductor:', error.message);

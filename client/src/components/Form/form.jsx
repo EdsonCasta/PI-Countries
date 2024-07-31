@@ -105,7 +105,7 @@ function Form() {
             return;
         }
         try {
-            await axios.post('http://localhost:3001/activities', { ...input, countries: input.countries });
+            await axios.post('https://countries-4778.onrender.com//activities', { ...input, countries: input.countries });
             setInput({
                 Nombre: "",
                 Dificultad: 1,

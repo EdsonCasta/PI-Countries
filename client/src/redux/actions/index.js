@@ -12,7 +12,7 @@ export const GET_ACTIVITIES = 'GET_ACTIVITIES';
 export function getCountries() {
     return async (dispatch) => {
       try {
-        const response = await axios("http://localhost:3001/countries");
+        const response = await axios("https://countries-4778.onrender.com/countries");
         return dispatch({
             type: "GET_COUNTRIES",
             payload: response.data
@@ -26,7 +26,7 @@ export function getCountries() {
 export function getByName(name) {
   return async (dispatch) => {
     try {
-      const response = await axios(`http://localhost:3001/countries/name?Nombre=${name}`);
+      const response = await axios(`https://countries-4778.onrender.com/countries/name?Nombre=${name}`);
       return dispatch({
         type: "GET_BY_NAME",
         payload: response.data
@@ -79,7 +79,7 @@ export const listPage = (countries, page) => {
 export const getActivities = () => {
   return async (dispatch) => {
     try {
-      const response = await axios("http://localhost:3001/activities");
+      const response = await axios("https://countries-4778.onrender.com/activities");
       return dispatch({
         type: "GET_ACTIVITIES",
         payload: response.data

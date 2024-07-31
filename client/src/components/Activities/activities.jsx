@@ -15,7 +15,7 @@ const Activities = () => {
     try {
       const confirmacion = confirm('Estas apunto de eliminar esta actividad de forma permanente')
       if (confirmacion) {
-        await axios.delete(`http://localhost:3001/activities/${Nombre}`)
+        await axios.delete(`https://countries-4778.onrender.com//activities/${Nombre}`)
         window.location.reload()
       }
     } catch (error) {
