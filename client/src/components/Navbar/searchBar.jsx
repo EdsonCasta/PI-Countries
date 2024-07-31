@@ -1,4 +1,4 @@
-import './SearchBarStyle.css';
+import './searchBarStyle.css';
 
 function  SearchBar({ handleChange, handleSubmit }) {
     return (
